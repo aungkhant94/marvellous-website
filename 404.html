@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Not found — Marvellous</title>
+  <meta name="robots" content="noindex">
+  <script>
+    // Old school-platform links used the bare domain (marvellous.cloud/web/...).
+    // The platform lives on www.marvellous.cloud, so send those visitors straight there.
+    (function () {
+      var p = location.pathname;
+      if (p === '/web' || p.indexOf('/web/') === 0) {
+        location.replace('https://www.marvellous.cloud' + p + location.search + location.hash);
+      }
+    })();
+  </script>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@500&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400&family=Instrument+Serif:ital@1&family=JetBrains+Mono&display=swap">
+  <style>
+    :root { --ink: #0a0a0b; --bone: #edeae3; --dim: rgba(237,234,227,.6); --gold: #d4a24c; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100svh; display: grid; place-items: center; background: var(--ink); color: var(--bone); font-family: 'Inter Tight', Arial, sans-serif; padding: 24px 16px; }
+    main { max-width: 720px; }
+    p.label { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--dim); }
+    h1 { font-family: 'Clash Display', 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(44px, 9vw, 120px); line-height: .92; letter-spacing: -.035em; margin: 20px 0 28px; }
+    em { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; color: var(--gold); }
+    a { color: var(--bone); font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; border: 1px solid var(--bone); border-radius: 999px; padding: 16px 26px; display: inline-block; text-decoration: none; }
+    a:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="label">404 · Page not found</p>
+    <h1>This page took a <em>different</em> route.</h1>
+    <a href="/">Back to Marvellous</a>
+  </main>
+</body>
+</html>

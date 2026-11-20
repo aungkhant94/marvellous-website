@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Marvellous — Technology, engineered in Myanmar</title>
+  <meta name="description" content="Marvellous is a technology house in Yangon. Software, cloud, data and AI — designed, built and operated by one team that knows every layer.">
+  <meta name="theme-color" content="#0a0a0b">
+  <meta property="og:title" content="Marvellous — Technology, engineered in Myanmar">
+  <meta property="og:description" content="Software, cloud, data and AI — designed, built and operated by one team.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://marvellous.cloud/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400&display=swap">
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600&amp;display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/","lenis":"https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.mjs"}}</script>
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js" crossorigin>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="loader" aria-hidden="true">
+    <svg viewBox="0 0 32 32" fill="none"><path d="M5 27V6l11 13L27 6v21" stroke="#D4A24C" stroke-width="2.4" stroke-linejoin="miter"/></svg>
+    <span class="loader-tag">Marvellous · Yangon</span>
+    <span class="loader-num" data-loader-num>000</span>
+  </div>
+  <div class="curtain" aria-hidden="true"></div>
+
+  <canvas class="stage" aria-hidden="true"></canvas>
+  <div class="fallback" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M5 27V6l11 13L27 6v21" stroke="#EDEAE3" stroke-width="2.4"/></svg></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Marvellous home">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M5 27V6l11 13L27 6v21" stroke="currentColor" stroke-width="2.4"/></svg>
+      MARVELLOUS
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="work.html">Work</a>
+      <a href="capabilities.html">Capabilities</a>
+      <a href="studio.html">Studio</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="header-cta link-line" href="contact.html"><span></span>Start a project</a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="menu">Menu</button>
+  </header>
+  <nav class="menu" id="menu" aria-label="Menu">
+    <a href="index.html"><small>00</small>Home</a>
+    <a href="work.html"><small>01</small>Work</a>
+    <a href="capabilities.html"><small>02</small>Capabilities</a>
+    <a href="studio.html"><small>03</small>Studio</a>
+    <a href="contact.html"><small>04</small>Contact</a>
+    <p class="menu-foot">info@marvellousmm.com · Yangon <span data-clock></span></p>
+  </nav>
+
+  <main id="main">
+    <!-- 00 — Hero -->
+    <section class="hero" data-shape="mark" data-x="0.56" data-scale="0.66" data-chapter="00 / Marvellous">
+      <p class="label reveal"><b>Est. 2018</b> Technology house · Yangon, Myanmar</p>
+      <h1 class="display" data-split style="margin-top:28px">We engineer the <em>systems</em> that run modern business.</h1>
+      <div class="hero-foot">
+        <p class="lede reveal" style="--d:.7s">Software, cloud, data and AI — designed, built and <strong>operated</strong> by one team that knows every layer.</p>
+        <span class="scroll-cue reveal" style="--d:.9s"><i></i>Scroll to explore</span>
+      </div>
+    </section>
+
+    <!-- Statement -->
+    <section class="panel" data-shape="loop" data-x="-0.5" data-scale="0.85" data-chapter="00 / Who we are">
+      <div class="grid">
+        <div class="right">
+          <p class="label reveal">Who we are</p>
+          <p class="statement" data-split style="margin-top:36px">Not an agency. Not a reseller. A technology house that <em>builds</em> what it sells and <em>stays</em> to run it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 — Software -->
+    <section class="panel chapter" id="software" data-shape="code" data-x="0.5" data-chapter="01 / Software">
+      <div class="grid">
+        <div class="left">
+          <p class="label reveal"><b>01</b> Software</p>
+          <h2 class="h2" data-split>Software, end to <em>end.</em></h2>
+          <p class="lede reveal">From the first conversation to the thousandth release. We design the product, write every layer and keep it healthy for years.</p>
+          <ul class="ticks reveal">
+            <li><span>A</span>Enterprise platforms and ERP</li>
+            <li><span>B</span>Web and mobile products</li>
+            <li><span>C</span>Microservices in Java and Go</li>
+            <li><span>D</span>Integrations, APIs and data migration</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 — Cloud -->
+    <section class="panel chapter" id="cloud" data-shape="network" data-x="-0.5" data-chapter="02 / Cloud">
+      <div class="grid">
+        <div class="right">
+          <p class="label reveal"><b>02</b> Cloud &amp; Infrastructure</p>
+          <h2 class="h2" data-split>Infrastructure that <em>stays up.</em></h2>
+          <p class="lede reveal">We take over complex estates — hundreds of services, many environments — and make them understood, observable and calm.</p>
+          <ul class="ticks reveal">
+            <li><span>A</span>Kubernetes, containers and CI/CD</li>
+            <li><span>B</span>AWS, Oracle Cloud and on-premise</li>
+            <li><span>C</span>Monitoring, incident response, runbooks</li>
+            <li><span>D</span>Security, access and secrets done properly</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 — AI -->
+    <section class="panel chapter" id="ai" data-shape="bot" data-x="0.5" data-chapter="03 / AI &amp; Data">
+      <div class="grid">
+        <div class="left">
+          <p class="label reveal"><b>03</b> AI &amp; Data</p>
+          <h2 class="h2" data-split>Intelligence that runs where your <em>data lives.</em></h2>
+          <p class="lede reveal">Private language models and agents, trained on your knowledge and served on your own hardware — useful, measurable and yours.</p>
+          <ul class="ticks reveal">
+            <li><span>A</span>Fine-tuned and local language models</li>
+            <li><span>B</span>Agents that work inside your systems</li>
+            <li><span>C</span>Search and answers over company knowledge</li>
+            <li><span>D</span>Dashboards, reporting and analytics</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 — Products -->
+    <section class="panel chapter" id="products" data-shape="galaxy" data-dim="0.3" data-scale="1.6" data-chapter="04 / Solutions">
+      <div class="grid">
+        <div class="full">
+          <p class="label reveal"><b>04</b> Solutions</p>
+          <h2 class="h2" data-split style="max-width:14ch">Platforms we <em>deliver.</em></h2>
+          <div class="products">
+            <a class="product reveal" href="work.html#erp" style="--d:.05s">
+              <p class="label">Enterprise</p><span class="arrow">↗</span>
+              <h3 class="h3">ERP</h3>
+              <p>Finance, people and operations in one system, built as independent services that grow with the company.</p>
+            </a>
+            <a class="product reveal" href="work.html#streaming" style="--d:.12s">
+              <p class="label">Media</p><span class="arrow">↗</span>
+              <h3 class="h3">Video Streaming</h3>
+              <p>Live and on-demand video for web, mobile and TV — fast to start, steady when everyone presses play.</p>
+            </a>
+            <a class="product reveal" href="work.html#platforms" style="--d:.19s">
+              <p class="label">Built to fit</p><span class="arrow">↗</span>
+              <h3 class="h3">Customized Platforms</h3>
+              <p>Portals, SaaS products and workflow tools shaped around how your organisation actually works.</p>
+            </a>
+            <a class="product reveal" href="work.html#advanced" style="--d:.26s">
+              <p class="label">Beyond the usual</p><span class="arrow">↗</span>
+              <h3 class="h3">Advanced Tech Solutions</h3>
+              <p>Private AI, systems of hundreds of services, and tooling that keeps complex software understood.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reach -->
+    <section class="panel" data-shape="globe" data-x="0.5" data-scale="0.78" data-chapter="05 / Reach">
+      <div class="grid">
+        <div class="left-wide">
+          <p class="label reveal"><b>05</b> Reach</p>
+          <h2 class="h2" data-split>Built in Yangon. <em>Running</em> everywhere.</h2>
+        </div>
+        <div class="left numbers two reveal">
+          <div><strong data-count="2018">2018</strong><span>Year we started building</span></div>
+          <div><strong data-count="200" data-suffix="+">200+</strong><span>Production services under our care</span></div>
+          <div><strong data-count="24" data-suffix="/7">24/7</strong><span>Watch on the systems we operate</span></div>
+          <div><strong data-count="1">1</strong><span>Team, accountable for every layer</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Selected work -->
+    <section class="panel" data-shape="globe" data-dim="0.22" data-scale="1.6" data-chapter="06 / Work">
+      <div class="grid">
+        <div class="full">
+          <div class="work-head">
+            <div>
+              <p class="label reveal"><b>06</b> Selected work</p>
+              <h2 class="h2" data-split style="margin-top:28px">Work that <em>works.</em></h2>
+            </div>
+            <a class="btn magnetic reveal" href="work.html">All projects ↗</a>
+          </div>
+          <ul class="work-list reveal">
+            <li class="work-row" data-art="erp" data-label="ERP"><a href="work.html#erp"><span class="idx">01</span><span class="name">ERP</span><span class="tags">finance • people • operations</span><span class="yr">↗</span></a></li>
+            <li class="work-row" data-art="stream" data-label="Video Streaming"><a href="work.html#streaming"><span class="idx">02</span><span class="name">Video Streaming</span><span class="tags">live • on demand • any screen</span><span class="yr">↗</span></a></li>
+            <li class="work-row" data-art="school" data-label="Customized Platforms"><a href="work.html#platforms"><span class="idx">03</span><span class="name">Customized Platforms</span><span class="tags">portals • saas • workflows</span><span class="yr">↗</span></a></li>
+            <li class="work-row" data-art="ai" data-label="Advanced Tech Solutions"><a href="work.html#advanced"><span class="idx">04</span><span class="name">Advanced Tech Solutions</span><span class="tags">ai • scale • code intelligence</span><span class="yr">↗</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="panel" data-shape="network" data-dim="0.28" data-scale="1.7" data-chapter="07 / Method">
+      <div class="grid">
+        <div class="full">
+          <p class="label reveal"><b>07</b> How we work</p>
+          <h2 class="h2" data-split style="margin-top:28px;max-width:16ch">Understand first. Then build <em>once,</em> properly.</h2>
+          <div class="process">
+            <div class="reveal" style="--d:0s"><b>01</b><h3>Understand</h3><p>We read the business and the existing systems before we write a line.</p></div>
+            <div class="reveal" style="--d:.12s"><b>02</b><h3>Design</h3><p>Architecture, interfaces and data — agreed, written down, owned by you.</p></div>
+            <div class="reveal" style="--d:.24s"><b>03</b><h3>Build</h3><p>Small, steady releases with tests and reviews. No surprises at the end.</p></div>
+            <div class="reveal" style="--d:.36s"><b>04</b><h3>Operate</h3><p>We deploy, watch and maintain what we build. For years, not weeks.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="panel" data-shape="mark" data-x="0.5" data-chapter="08 / Contact">
+      <div class="grid">
+        <div class="left-wide">
+          <p class="label reveal"><b>08</b> Contact</p>
+          <h2 class="display" data-split style="margin-top:28px">Have something <em>big</em> in mind?</h2>
+          <a class="contact-big reveal" href="mailto:info@marvellousmm.com">info@marvellousmm.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div><h4>Marvellous</h4><p>A technology house from Myanmar.<br>Software · Cloud · AI · Products</p></div>
+      <div><h4>Studio</h4><p>H 107, Manawharri Housing<br>Ahlone, Yangon</p></div>
+      <div><h4>Contact</h4><ul><li><a href="mailto:info@marvellousmm.com">info@marvellousmm.com</a></li><li><a href="tel:+959256200297">+95 9 256 200 297</a></li></ul></div>
+      <div><h4>Follow</h4><ul><li><a href="https://www.linkedin.com/company/marvellousmm" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.facebook.com/marvellousmm" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://medium.com/@marvellous.app" target="_blank" rel="noopener">Medium</a></li></ul></div>
+    </div>
+    <div class="footer-word" aria-hidden="true">Marvellous</div>
+    <div class="footer-base"><span>© <span data-year>2026</span> Marvellous</span><span>Yangon <span data-clock></span></span><span>Built in-house</span></div>
+  </footer>
+
+  <div class="hud" aria-hidden="true">
+    <span data-hud-chapter>00 / Marvellous</span>
+    <span>Yangon <b data-clock></b></span>
+    <span><b data-hud-progress>000</b> %</span>
+    <span class="hud-bar"><i></i></span>
+  </div>
+  <div class="work-preview" aria-hidden="true"><span data-preview-label></span></div>
+</body>
+</html>

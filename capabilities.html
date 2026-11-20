@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Capabilities — Marvellous</title>
+  <meta name="description" content="Product engineering, enterprise systems, cloud and DevOps, AI and data, and long-term support — one team.">
+  <meta name="theme-color" content="#0a0a0b">
+  <meta property="og:title" content="Capabilities — Marvellous">
+  <meta property="og:description" content="Software, cloud, data and AI — designed, built and operated by one team.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://marvellous.cloud/capabilities.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400&display=swap">
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600&amp;display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/","lenis":"https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.mjs"}}</script>
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js" crossorigin>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="loader skip" aria-hidden="true">
+    <svg viewBox="0 0 32 32" fill="none"><path d="M5 27V6l11 13L27 6v21" stroke="#D4A24C" stroke-width="2.4" stroke-linejoin="miter"/></svg>
+    <span class="loader-tag">Marvellous · Yangon</span>
+    <span class="loader-num" data-loader-num>000</span>
+  </div>
+  <div class="curtain" aria-hidden="true"></div>
+
+  <canvas class="stage" aria-hidden="true"></canvas>
+  <div class="fallback" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M5 27V6l11 13L27 6v21" stroke="#EDEAE3" stroke-width="2.4"/></svg></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Marvellous home">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M5 27V6l11 13L27 6v21" stroke="currentColor" stroke-width="2.4"/></svg>
+      MARVELLOUS
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="work.html">Work</a>
+      <a href="capabilities.html" aria-current="page">Capabilities</a>
+      <a href="studio.html">Studio</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="header-cta link-line" href="contact.html"><span></span>Start a project</a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="menu">Menu</button>
+  </header>
+  <nav class="menu" id="menu" aria-label="Menu">
+    <a href="index.html"><small>00</small>Home</a>
+    <a href="work.html"><small>01</small>Work</a>
+    <a href="capabilities.html"><small>02</small>Capabilities</a>
+    <a href="studio.html"><small>03</small>Studio</a>
+    <a href="contact.html"><small>04</small>Contact</a>
+    <p class="menu-foot">info@marvellousmm.com · Yangon <span data-clock></span></p>
+  </nav>
+
+  <main id="main">
+
+    <section class="hero page-hero" data-shape="network" data-x="0.56" data-scale="0.85" data-chapter="00 / Capabilities">
+      <p class="label reveal"><b>Capabilities</b> What we do</p>
+      <h1 class="display" data-split style="margin-top:28px">Everything technology. <em>One</em> team.</h1>
+      <div class="hero-foot">
+        <p class="lede reveal" style="--d:.6s">Strategy to code to operations. Clients come to us for one thing and stay for the rest, because every layer is handled by the same people.</p>
+        <span class="scroll-cue reveal" style="--d:.8s"><i></i>Scroll</span>
+      </div>
+    </section>
+
+    <section class="cap-block" data-shape="code" data-dim="0.2" data-scale="1.5" data-chapter="01 / Product">
+      <div class="grid">
+        <div class="left">
+          <p class="cap-index reveal">01</p>
+          <h2 class="h2" data-split style="margin:20px 0 24px">Product <em>engineering</em></h2>
+          <p class="lede reveal">Web and mobile products designed and built properly — from the first sketch to the thousandth release.</p>
+          <div class="stack reveal"><span>Java</span><span>Go</span><span>TypeScript</span><span>React</span><span>Spring Boot</span><span>PostgreSQL</span></div>
+        </div>
+        <ul class="cap-list reveal"><li>Product discovery &amp; UX</li><li>Web applications</li><li>Mobile applications</li><li>APIs &amp; integrations</li><li>Legacy modernisation</li><li>Testing &amp; quality</li></ul>
+      </div>
+    </section>
+
+    <section class="cap-block" data-shape="galaxy" data-dim="0.2" data-scale="1.5" data-chapter="02 / Enterprise">
+      <div class="grid">
+        <div class="left">
+          <p class="cap-index reveal">02</p>
+          <h2 class="h2" data-split style="margin:20px 0 24px">Enterprise <em>systems</em></h2>
+          <p class="lede reveal">The systems a company runs on: finance, people, stock and reporting — connected, accurate and owned by you.</p>
+          <div class="stack reveal"><span>Microservices</span><span>Event-driven</span><span>Role-based access</span><span>Audit trails</span></div>
+        </div>
+        <ul class="cap-list reveal"><li>ERP &amp; finance</li><li>HR &amp; payroll</li><li>Inventory &amp; operations</li><li>Reporting &amp; BI</li><li>Data migration</li><li>Training &amp; rollout</li></ul>
+      </div>
+    </section>
+
+    <section class="cap-block" data-shape="network" data-dim="0.2" data-scale="1.5" data-chapter="03 / Cloud &amp;">
+      <div class="grid">
+        <div class="left">
+          <p class="cap-index reveal">03</p>
+          <h2 class="h2" data-split style="margin:20px 0 24px">Cloud &amp; <em>DevOps</em></h2>
+          <p class="lede reveal">Infrastructure that is written down, repeatable and watched — in the public cloud or on your own servers.</p>
+          <div class="stack reveal"><span>Kubernetes</span><span>Docker</span><span>Helm</span><span>Terraform</span><span>AWS</span><span>OCI</span></div>
+        </div>
+        <ul class="cap-list reveal"><li>Kubernetes &amp; Helm</li><li>CI/CD pipelines</li><li>AWS &amp; Oracle Cloud</li><li>Monitoring &amp; alerting</li><li>Backup &amp; recovery</li><li>Security &amp; access</li></ul>
+      </div>
+    </section>
+
+    <section class="cap-block" data-shape="neural" data-dim="0.2" data-scale="1.5" data-chapter="04 / AI &amp;">
+      <div class="grid">
+        <div class="left">
+          <p class="cap-index reveal">04</p>
+          <h2 class="h2" data-split style="margin:20px 0 24px">AI &amp; <em>data</em></h2>
+          <p class="lede reveal">Private language models, agents and analytics that work on your data without it leaving your hands.</p>
+          <div class="stack reveal"><span>PyTorch</span><span>Transformers</span><span>RAG</span><span>Knowledge graphs</span></div>
+        </div>
+        <ul class="cap-list reveal"><li>Local LLM deployment</li><li>Fine-tuning (LoRA / QLoRA)</li><li>Search over company knowledge</li><li>Agents &amp; tool use</li><li>Evaluation</li><li>Dashboards &amp; analytics</li></ul>
+      </div>
+    </section>
+
+    <section class="cap-block" data-shape="globe" data-dim="0.2" data-scale="1.5" data-chapter="05 / Support &amp;">
+      <div class="grid">
+        <div class="left">
+          <p class="cap-index reveal">05</p>
+          <h2 class="h2" data-split style="margin:20px 0 24px">Support &amp; <em>operations</em></h2>
+          <p class="lede reveal">We stay after launch. Systems we build or inherit are watched, maintained and improved for years.</p>
+          <div class="stack reveal"><span>Runbooks</span><span>On-call</span><span>SLAs</span></div>
+        </div>
+        <ul class="cap-list reveal"><li>Around-the-clock monitoring</li><li>Incident response</li><li>Maintenance releases</li><li>Taking over existing systems</li><li>Documentation &amp; runbooks</li><li>Service agreements</li></ul>
+      </div>
+    </section>
+
+    <section class="panel" data-shape="mark" data-x="0.5" data-chapter="06 / Contact">
+      <div class="grid">
+        <div class="left-wide">
+          <p class="label reveal"><b>06</b> Contact</p>
+          <h2 class="display" data-split style="margin-top:28px">Tell us what you <em>need.</em></h2>
+          <a class="contact-big reveal" href="mailto:info@marvellousmm.com">info@marvellousmm.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div><h4>Marvellous</h4><p>A technology house from Myanmar.<br>Software · Cloud · AI · Products</p></div>
+      <div><h4>Studio</h4><p>H 107, Manawharri Housing<br>Ahlone, Yangon</p></div>
+      <div><h4>Contact</h4><ul><li><a href="mailto:info@marvellousmm.com">info@marvellousmm.com</a></li><li><a href="tel:+959256200297">+95 9 256 200 297</a></li></ul></div>
+      <div><h4>Follow</h4><ul><li><a href="https://www.linkedin.com/company/marvellousmm" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.facebook.com/marvellousmm" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://medium.com/@marvellous.app" target="_blank" rel="noopener">Medium</a></li></ul></div>
+    </div>
+    <div class="footer-word" aria-hidden="true">Marvellous</div>
+    <div class="footer-base"><span>© <span data-year>2026</span> Marvellous</span><span>Yangon <span data-clock></span></span><span>Built in-house</span></div>
+  </footer>
+
+  <div class="hud" aria-hidden="true">
+    <span data-hud-chapter>00 / Marvellous</span>
+    <span>Yangon <b data-clock></b></span>
+    <span><b data-hud-progress>000</b> %</span>
+    <span class="hud-bar"><i></i></span>
+  </div>
+  <div class="work-preview" aria-hidden="true"><span data-preview-label></span></div>
+</body>
+</html>
