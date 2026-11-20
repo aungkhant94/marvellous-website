@@ -312,9 +312,18 @@ html:not(.js) [data-split] .w > span { transform: none; }
 }
 .loaded .loader { clip-path: inset(0 0 100% 0); }
 .loader.skip { display: none; }
-.loader svg { width: 72px; height: 72px; }
-.loader path { stroke-dasharray: 260; stroke-dashoffset: 260; animation: draw 1.4s var(--ease-io) forwards; }
-@keyframes draw { to { stroke-dashoffset: 0; } }
+.loader-logo { position: relative; width: clamp(120px, 16vw, 180px); animation: logo-in 1.2s var(--ease) both; }
+/* The logo file is used as a stencil and filled with the site's gold, with a sheen moving inside it. */
+.loader-logo img { display: block; width: 100%; height: auto; opacity: 0; }
+.loader-logo::after {
+  content: ''; position: absolute; inset: 0;
+  -webkit-mask: url(logo.png) center / contain no-repeat; mask: url(logo.png) center / contain no-repeat;
+  background: linear-gradient(105deg, var(--gold) 0 40%, #f3d9a0 50%, var(--gold) 60% 100%);
+  background-size: 300% 100%; background-position: 100% 0;
+  animation: sheen 2s var(--ease-io) 0.4s infinite;
+}
+@keyframes logo-in { from { opacity: 0; transform: translateY(14px) scale(0.92); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes sheen { to { background-position: 0% 0; } }
 .loader-num { position: absolute; right: var(--gutter); bottom: 28px; font-family: var(--mono); font-size: clamp(56px, 10vw, 140px); letter-spacing: -0.04em; line-height: 0.8; font-variant-numeric: tabular-nums; }
 .loader-tag { position: absolute; left: var(--gutter); bottom: 32px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-dim); }
 .html-no-loader .loader { display: none; }
