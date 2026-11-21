@@ -230,6 +230,71 @@ function sampleLoop(count, rand) {
   return { pos, nrm };
 }
 
+// The Marvellous logo (the M inside a graduation cap), extruded from logo.png.
+// Faces are sampled from opaque pixels, side walls from edge pixels. The solid M stays
+// light; the thin cap outline is gold. Writes straight into the given arrays.
+function sampleLogo(img, pos, nrm, count, rand) {
+  const W = 512, H = Math.round((512 * img.naturalHeight) / img.naturalWidth);
+  const c = document.createElement('canvas');
+  c.width = W; c.height = H;
+  const g = c.getContext('2d', { willReadFrequently: true });
+  g.drawImage(img, 0, 0, W, H);
+  const data = g.getImageData(0, 0, W, H).data;
+  const inside = new Uint8Array(W * H);
+  for (let i = 0; i < W * H; i++) inside[i] = data[i * 4 + 3] > 120 ? 1 : 0;
+  // Chamfer distance to the outside tells thick strokes (the M) from thin ones (the cap).
+  const dist = (seed) => {
+    const d = new Float32Array(W * H);
+    for (let i = 0; i < W * H; i++) d[i] = seed[i] ? 1e6 : 0;
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+      const i = y * W + x; if (!d[i]) continue;
+      if (x > 0) d[i] = Math.min(d[i], d[i - 1] + 1);
+      if (y > 0) d[i] = Math.min(d[i], d[i - W] + 1);
+      if (x > 0 && y > 0) d[i] = Math.min(d[i], d[i - W - 1] + 1.414);
+      if (x < W - 1 && y > 0) d[i] = Math.min(d[i], d[i - W + 1] + 1.414);
+    }
+    for (let y = H - 1; y >= 0; y--) for (let x = W - 1; x >= 0; x--) {
+      const i = y * W + x; if (!d[i]) continue;
+      if (x < W - 1) d[i] = Math.min(d[i], d[i + 1] + 1);
+      if (y < H - 1) d[i] = Math.min(d[i], d[i + W] + 1);
+      if (x < W - 1 && y < H - 1) d[i] = Math.min(d[i], d[i + W + 1] + 1.414);
+      if (x > 0 && y < H - 1) d[i] = Math.min(d[i], d[i + W - 1] + 1.414);
+    }
+    return d;
+  };
+  const dIn = dist(inside);
+  const core = new Uint8Array(W * H);
+  for (let i = 0; i < W * H; i++) core[i] = dIn[i] >= 8 ? 0 : 1; // 0 marks the thick core
+  const dCore = dist(core); // distance to the thick core
+  const faces = [], edges = [];
+  for (let y = 1; y < H - 1; y++) for (let x = 1; x < W - 1; x++) {
+    const i = y * W + x;
+    if (!inside[i]) continue;
+    faces.push(i);
+    if (!inside[i - 1] || !inside[i + 1] || !inside[i - W] || !inside[i + W]) edges.push(i);
+  }
+  const S = 4.3 / W, D = 0.34; // world units per pixel, depth
+  const faceArea = faces.length * 2, sideArea = edges.length * (D / S);
+  const toWorld = (x, y) => [(x - W / 2) * S, (H / 2 - y) * S];
+  for (let k = 0; k < count; k++) {
+    let i, x, y, z, nx = 0, ny = 0, nz;
+    if (rand() * (faceArea + sideArea) < faceArea) {
+      i = faces[Math.floor(rand() * faces.length)];
+      x = (i % W) + rand(); y = Math.floor(i / W) + rand();
+      nz = rand() < 0.5 ? 1 : -1; z = (nz * D) / 2;
+    } else {
+      i = edges[Math.floor(rand() * edges.length)];
+      x = (i % W) + 0.5; y = Math.floor(i / W) + 0.5; z = (rand() - 0.5) * D; nz = 0;
+      nx = inside[i - 1] - inside[i + 1]; ny = inside[i + W] - inside[i - W]; // points outward, image y down
+      const l = Math.hypot(nx, ny) || 1; nx /= l; ny /= l;
+    }
+    const [wx, wy] = toWorld(x, y);
+    const gold = dCore[i] > 2.5 ? 1 : 0; // thin cap outline → gold
+    pos.set([wx, wy + 0.1, z, gold], k * 4);
+    nrm.set([nx, ny, nz, 0], k * 4);
+  }
+}
+
 function sampleSurface(sdf, gold, box, count, rand) {
   // Sample up to 12k true surface points (the slow part), then fill the rest with
   // copies nudged along the surface — visually identical, about 5x faster.
@@ -343,15 +408,17 @@ const SHAPES_GLSL = /* glsl */ `
   }
   // Sculptures turn slowly on a pedestal of two glowing rings.
   float turn(float t) { return t * 0.42 + sin(t * 0.3) * 0.25; }
+  // The flat logo sways instead of spinning, so it always faces the visitor.
+  float sway(float t) { return sin(t * 0.45) * 0.7; }
   vec3 pedestal(vec4 s, float t, float y) {
     float ring = step(0.5, s.y);
     float R = mix(1.75, 2.25, ring);
     float a = s.x * TAU + t * mix(0.25, -0.15, ring);
     return vec3(cos(a) * R, y + (s.w - 0.5) * 0.03, sin(a) * R * 0.95);
   }
-  vec3 sculpt(sampler2D tex, vec2 uv, vec4 s, float t, float base) {
+  vec3 sculpt(sampler2D tex, vec2 uv, vec4 s, float t, float base, float ang) {
     if (s.z > 0.9) return pedestal(s, t, base);
-    return rotY(texture2D(tex, uv).xyz, turn(t));
+    return rotY(texture2D(tex, uv).xyz, ang);
   }
   vec3 shape(float id, vec4 s, vec2 uv, float t) {
     if (id < 0.5) return galaxy(s, t);
@@ -359,17 +426,17 @@ const SHAPES_GLSL = /* glsl */ `
     if (id < 2.5) return knot(s, t);
     if (id < 3.5) return orbits(s, t);
     if (id < 4.5) return globe(s, t);
-    if (id < 5.5) return sculpt(uMarkPos, uv, s, t, -1.95);
-    if (id < 6.5) return sculpt(uBotPos, uv, s, t, -1.85);
-    if (id < 7.5) return sculpt(uLoopPos, uv, s, t, -2.05);
-    return sculpt(uChinPos, uv, s, t, -1.95);
+    if (id < 5.5) return sculpt(uMarkPos, uv, s, t, -2.3, sway(t));
+    if (id < 6.5) return sculpt(uBotPos, uv, s, t, -1.85, turn(t));
+    if (id < 7.5) return sculpt(uLoopPos, uv, s, t, -2.05, turn(t));
+    return sculpt(uChinPos, uv, s, t, -1.95, turn(t));
   }
   // Surface normal for lighting. Procedural shapes use a soft radial normal.
   vec4 shapeNormal(float id, vec4 s, vec2 uv, float t, vec3 p) {
     if (id > 4.5 && s.z <= 0.9) {
       vec3 n = id < 5.5 ? texture2D(uMarkNrm, uv).xyz : (id < 6.5 ? texture2D(uBotNrm, uv).xyz : (id < 7.5 ? texture2D(uLoopNrm, uv).xyz : texture2D(uChinNrm, uv).xyz));
       float g = id < 5.5 ? texture2D(uMarkPos, uv).w : (id < 6.5 ? texture2D(uBotPos, uv).w : (id < 7.5 ? texture2D(uLoopPos, uv).w : texture2D(uChinPos, uv).w));
-      return vec4(rotY(n, turn(t)), g);
+      return vec4(rotY(n, id < 5.5 ? sway(t) : turn(t)), g);
     }
     return vec4(normalize(p + 1e-4), 0.0);
   }
@@ -462,7 +529,7 @@ const RENDER_VERT = /* glsl */ `
     float twinkle = 0.8 + 0.2 * sin(uTime * 2.3 + s.x * 60.0);
     float isMark = mix(step(4.5, uFrom) * step(uFrom, 5.5), step(4.5, uTo) * step(uTo, 5.5), m);
     // The M: one even, slightly larger bead size. Other sculptures keep the varied sizes.
-    float sculptBead = mix(0.62 + pow(s.y, 3.0) * 1.5 + step(0.985, s.x) * 0.9, 0.95, isMark);
+    float sculptBead = mix(0.62 + pow(s.y, 3.0) * 1.5 + step(0.985, s.x) * 0.9, 0.62, isMark); // the logo: even, fine beads so the cap lines read
     float bead = mix(0.35 + s.y * s.y * 1.3, sculptBead, solid);
     float solidAll = mix(step(4.5, uFrom), step(4.5, uTo), m);
     gl_PointSize = uSize * bead * (1.0 + blur * 1.4 * (1.0 - solidAll)) * (1.0 - dust * mix(0.3, 0.8, solidAll)) * uPixelRatio / -mv.z;
@@ -533,6 +600,17 @@ export function createScene(canvas, { mobile = false, reduced = false, shapes = 
   const loop = need('loop') ? sampleLoop(N, rand) : mark;
   const chin = need('chinthe') ? sampleSurface(sdChinthe, chintheGold, [-1.0, -1.86, -1.62, 1.0, 2.42, 1.62], N, rand) : mark;
   const markPos = floatTex(mark.pos), markNrm = floatTex(mark.nrm), botPos = floatTex(bot.pos), botNrm = floatTex(bot.nrm);
+  // Swap the plain M for the full logo (M with the cap) as soon as logo.png is ready.
+  if (need('mark')) {
+    const logo = new Image();
+    logo.onload = () => {
+      try {
+        sampleLogo(logo, markPos.image.data, markNrm.image.data, N, rand);
+        markPos.needsUpdate = true; markNrm.needsUpdate = true;
+      } catch (e) { console.warn('logo sculpture unavailable', e); }
+    };
+    logo.src = 'logo.png';
+  }
   const loopPos = floatTex(loop.pos), loopNrm = floatTex(loop.nrm), chinPos = floatTex(chin.pos), chinNrm = floatTex(chin.nrm);
 
   // Globe data: Yangon and the cities its arcs reach.
@@ -660,7 +738,7 @@ export function createScene(canvas, { mobile = false, reduced = false, shapes = 
     const side = narrow ? 0 : Math.min(1, Math.abs(cur.x) * 2);
     const fit = Math.min(1, (halfW * 0.5) / 2.1);
     group.position.x = narrow ? 0 : cur.x * halfW;
-    group.position.y = narrow ? TAN * camera.position.z * 0.42 : 0;
+    group.position.y = narrow ? TAN * camera.position.z * 0.5 : 0;
     group.scale.setScalar(cur.scale * (narrow ? 0.78 : 1 + (fit - 1) * side));
     if (!reduced) {
       cur.ry += ((mouse.on ? mouse.ndc.x * 0.25 : 0) - cur.ry) * k * 0.5;
