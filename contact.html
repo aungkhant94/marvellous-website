@@ -20,6 +20,7 @@
   <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/","lenis":"https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.mjs"}}</script>
   <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js" crossorigin>
   <script type="module" src="app.js"></script>
+  <script type="module" src="form.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -42,6 +43,7 @@
       MARVELLOUS
     </a>
     <nav class="nav" aria-label="Main">
+      <a href="index.html#live-products">Products</a>
       <a href="work.html">Work</a>
       <a href="capabilities.html">Capabilities</a>
       <a href="studio.html">Studio</a>
@@ -52,46 +54,98 @@
   </header>
   <nav class="menu" id="menu" aria-label="Menu">
     <a href="index.html"><small>00</small>Home</a>
-    <a href="work.html"><small>01</small>Work</a>
-    <a href="capabilities.html"><small>02</small>Capabilities</a>
-    <a href="studio.html"><small>03</small>Studio</a>
-    <a href="contact.html"><small>04</small>Contact</a>
+    <a href="index.html#live-products"><small>01</small>Products</a>
+    <a href="work.html"><small>02</small>Work</a>
+    <a href="capabilities.html"><small>03</small>Capabilities</a>
+    <a href="studio.html"><small>04</small>Studio</a>
+    <a href="contact.html"><small>05</small>Contact</a>
     <p class="menu-foot">info@marvellousmm.com · Yangon <span data-clock></span></p>
   </nav>
 
   <main id="main">
 
-    <section class="hero page-hero" data-shape="mark" data-x="0.62" data-scale="0.7" data-chapter="00 / Contact" style="min-height:100svh">
+    <section class="hero page-hero" data-shape="mark" data-x="0.62" data-scale="0.7" data-chapter="00 / Contact" style="min-height:82svh">
       <p class="label reveal"><b>Contact</b> Start a project</p>
       <h1 class="display" data-split style="margin-top:28px">Let's build something <em>remarkable.</em></h1>
-      <a class="contact-big reveal" style="--d:.6s" href="mailto:info@marvellousmm.com">info@marvellousmm.com</a>
+      <div class="hero-foot">
+        <p class="lede reveal" style="--d:.6s">Tell us about your business and what you have in mind. A few minutes here helps us come back with the right people and a real answer.</p>
+        <a class="btn magnetic reveal" style="--d:.8s" href="#start">Fill in the form ↓</a>
+      </div>
     </section>
 
-    <section class="panel" data-shape="network" data-x="0.5" data-chapter="01 / Details">
-      <div class="grid">
-        <div class="left">
-          <p class="label reveal"><b>01</b> A good first message</p>
-          <h2 class="h2" data-split style="margin:28px 0 36px">Tell us <em>three</em> things.</h2>
-          <ul class="ticks reveal">
-            <li><span>A</span>What you want to build or fix</li>
-            <li><span>B</span>Who will use it, and how many</li>
-            <li><span>C</span>Your timeline and budget range</li>
-          </ul>
-          <div class="contact-grid reveal">
-            <div><h4>Email</h4><p><a class="link-line" href="mailto:info@marvellousmm.com">info@marvellousmm.com</a></p></div>
-            <div><h4>Phone</h4><p><a class="link-line" href="tel:+959256200297">+95 9 256 200 297</a></p></div>
-            <div><h4>Studio</h4><p>H 107, Manawharri Housing<br>Ahlone, Yangon<br><a class="link-line" href="https://www.google.com/maps/search/?api=1&amp;query=Manawharri+Housing+Ahlone+Yangon" target="_blank" rel="noopener">Open in Maps ↗</a></p></div>
-          </div>
+    <section class="form-section" id="start" data-shape="network" data-dim="0.14" data-scale="1.8" data-chapter="01 / Your project">
+      <form class="enquiry" id="enquiry" novalidate
+            data-endpoint="https://script.google.com/macros/s/AKfycbw1XRkgWuyjDsx0A326CdvBxHuqZg5YIDB2aig3aWSC670C4RyXVxtGNMcA3BX2Szn6/exec"
+            data-turnstile-sitekey="0x4AAAAAAGWex9KkpL1Vgvwr">
+        <div class="form-intro">
+          <p class="label"><b>01</b> Your project</p>
+          <h2 class="h2" style="margin:24px 0 0">Tell us <em>everything.</em></h2>
         </div>
-      </div>
+
+        <fieldset>
+          <legend>About you</legend>
+          <div class="f-grid">
+            <label class="field"><span>Full name *</span><input name="name" autocomplete="name" required maxlength="120" placeholder="Your name"></label>
+            <label class="field"><span>Company</span><input name="company" autocomplete="organization" maxlength="160" placeholder="Business or organisation"></label>
+            <label class="field"><span>Phone *</span><input name="phone" type="tel" autocomplete="tel" required maxlength="40" placeholder="+95 9 …" pattern="[\d \+\-\(\)]{7,40}"></label>
+            <label class="field"><span>Email *</span><input name="email" type="email" autocomplete="email" required maxlength="160" placeholder="you@company.com"></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Business locations</legend>
+          <p class="hint">Start typing an address, city or landmark — pick a suggestion or keep your own text. Add every place you operate.</p>
+          <div class="locations" id="locations"></div>
+          <button type="button" class="add-loc" id="add-location">+ Add another location</button>
+          <p class="attrib">Address suggestions © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors, via Photon.</p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Your scenario *</legend>
+          <p class="hint">What do you want to build, fix or run? Who uses it today, what hurts, what would “done” look like? The more you write, the better our first answer.</p>
+          <label class="field area"><textarea name="scenario" required minlength="30" maxlength="8000" rows="10" placeholder="Describe your situation in your own words…"></textarea></label>
+          <p class="counter"><span id="word-count">0</span> words · up to 8,000 characters</p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Where are you? *</legend>
+          <div class="chips" role="radiogroup"><label class="chip"><input type="radio" name="readiness" value="Ready to start a project" required><span>Ready to start a project</span></label><label class="chip"><input type="radio" name="readiness" value="Interested in a product"><span>Interested in a product</span></label><label class="chip"><input type="radio" name="readiness" value="Still thinking"><span>Still thinking</span></label></div>
+          <div class="products-pick" id="products-pick" hidden>
+            <p class="hint">Which products?</p>
+            <div class="chips" role="radiogroup"><label class="chip"><input type="checkbox" name="products" value="ERP"><span>ERP</span></label><label class="chip"><input type="checkbox" name="products" value="M-Living"><span>M-Living</span></label><label class="chip"><input type="checkbox" name="products" value="Arcade"><span>Arcade</span></label><label class="chip"><input type="checkbox" name="products" value="TuT"><span>TuT</span></label><label class="chip"><input type="checkbox" name="products" value="Fortress of Solitude"><span>Fortress of Solitude</span></label><label class="chip"><input type="checkbox" name="products" value="Marvellous Ops"><span>Marvellous Ops</span></label><label class="chip"><input type="checkbox" name="products" value="LLM"><span>LLM</span></label></div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>What you already have</legend>
+          <div class="f-row"><p class="q">IT infrastructure (servers, cloud, network)</p><div class="chips" role="radiogroup"><label class="chip"><input type="radio" name="itInfra" value="None yet"><span>None yet</span></label><label class="chip"><input type="radio" name="itInfra" value="Some"><span>Some</span></label><label class="chip"><input type="radio" name="itInfra" value="Established"><span>Established</span></label></div></div>
+          <div class="f-row"><p class="q">IT people</p><div class="chips" role="radiogroup"><label class="chip"><input type="radio" name="itPeople" value="None"><span>None</span></label><label class="chip"><input type="radio" name="itPeople" value="1–2 people"><span>1–2 people</span></label><label class="chip"><input type="radio" name="itPeople" value="A team"><span>A team</span></label></div></div>
+          <div class="f-row"><p class="q">Size of business (employees)</p><div class="chips" role="radiogroup"><label class="chip"><input type="radio" name="employees" value="1–10"><span>1–10</span></label><label class="chip"><input type="radio" name="employees" value="11–50"><span>11–50</span></label><label class="chip"><input type="radio" name="employees" value="51–200"><span>51–200</span></label><label class="chip"><input type="radio" name="employees" value="201–1,000"><span>201–1,000</span></label><label class="chip"><input type="radio" name="employees" value="1,000+"><span>1,000+</span></label></div></div>
+        </fieldset>
+
+        <div class="trap" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></div>
+
+        <div class="f-submit">
+          <label class="consent"><input type="checkbox" name="consent" required> <span>Marvellous may contact me about this request. We never share your details.</span></label>
+          <div id="turnstile"></div>
+          <button class="btn submit" type="submit"><span>Send to Marvellous</span> ↗</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </div>
+
+        <div class="form-done" id="form-done" hidden>
+          <p class="label"><b>Received</b> Thank you</p>
+          <h2 class="h2" style="margin:24px 0">We'll reach you as soon as <em>possible.</em></h2>
+          <p class="lede">Your details are with our team. Expect a call or email from Marvellous, usually within one working day.</p>
+        </div>
+      </form>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="footer-grid">
       <div><h4>Marvellous</h4><p>A technology house from Myanmar.<br>Software · Cloud · AI · Products</p></div>
-      <div><h4>Studio</h4><p>H 107, Manawharri Housing<br>Ahlone, Yangon</p></div>
-      <div><h4>Contact</h4><ul><li><a href="mailto:info@marvellousmm.com">info@marvellousmm.com</a></li><li><a href="tel:+959256200297">+95 9 256 200 297</a></li></ul></div>
+      <div><h4>Locations</h4><p>Bangkok, Chiang Mai — Thailand<br>Yangon, Mandalay — Myanmar<br>WA, CA, TX — USA</p></div>
+      <div><h4>Contact</h4><ul><li><a href="mailto:info@marvellousmm.com">info@marvellousmm.com</a></li><li><a href="contact.html#start">Start a project</a></li></ul></div>
       <div><h4>Follow</h4><ul><li><a href="https://www.linkedin.com/company/marvellousmm" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.facebook.com/marvellousmm" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://medium.com/@marvellous.app" target="_blank" rel="noopener">Medium</a></li></ul></div>
     </div>
     <div class="footer-word" aria-hidden="true">Marvellous</div>

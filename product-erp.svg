@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ERP">
+  <!-- ERP: two modules woven together like chain links (Aung's pick, "Woven Links", 2026-11-27).
+       Over-and-under at both crossings: the light link passes over at the top, the gold link at the bottom.
+       Colours are the ERP app's own: gold #ccb020, soft gold #f6efc8, navy #1f2266. -->
+  <g fill="none" stroke-width="6.5">
+    <rect x="-10.6" y="-10.6" width="21.2" height="21.2" rx="4.5" transform="translate(39 32) rotate(45)" stroke="#ccb020"/>
+    <rect x="-10.6" y="-10.6" width="21.2" height="21.2" rx="4.5" transform="translate(25 32) rotate(45)" stroke="#f6efc8"/>
+    <!-- top crossing: light link over gold -->
+    <path d="M28.2 20.2 L35.8 27.8" stroke="#1f2266" stroke-width="12"/>
+    <path d="M27.6 19.6 L36.4 28.4" stroke="#f6efc8"/>
+    <!-- bottom crossing: gold link over light -->
+    <path d="M28.2 36.2 L35.8 43.8" stroke="#1f2266" stroke-width="12"/>
+    <path d="M27.6 35.6 L36.4 44.4" stroke="#ccb020"/>
+  </g>
+</svg>

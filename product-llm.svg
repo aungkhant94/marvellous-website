@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="LLM">
+  <!-- LLM: stacked model layers (our own trained models), the top layer lit from a bright core. -->
+  <g stroke-linejoin="round" stroke-width="1.2">
+    <polygon points="32,35 54,45 32,55 10,45" fill="#3a1d7e" stroke="#3a1d7e"/>
+    <polygon points="32,25 54,35 32,45 10,35" fill="#6b3be0" stroke="#6b3be0"/>
+    <polygon points="32,15 54,25 32,35 10,25" fill="#b18cff" stroke="#b18cff"/>
+  </g>
+  <circle cx="32" cy="25" r="4.4" fill="#f6efff"/>
+  <circle cx="32" cy="25" r="8" fill="none" stroke="#f6efff" stroke-opacity="0.45" stroke-width="1.6"/>
+</svg>

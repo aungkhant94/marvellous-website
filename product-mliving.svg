@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="M-Living">
+  <!-- M-Living: a key whose bow is a house — the keys to every home, in one hand (Aung's pick, 2026-11-27). -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M7 30 L19 19 L31 30 V45 H7 Z" stroke="#ead7ae" stroke-width="5"/>
+    <path d="M31 37 H57" stroke="#d9a441" stroke-width="5.5"/>
+    <path d="M50 37 V44 M43 37 V42" stroke="#d9a441" stroke-width="5"/>
+  </g>
+  <circle cx="19" cy="34" r="3.4" fill="#d9a441"/>
+</svg>
